@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Function to find the number of non-zero elements
+
 int countNonZeroElements(int matrix[][10], int size) {
     int count = 0;
     for (int i = 0; i < size; i++) {
@@ -13,7 +13,7 @@ int countNonZeroElements(int matrix[][10], int size) {
     return count;
 }
 
-// Function to display the upper triangular matrix
+
 void displayUpperTriangular(int matrix[][10], int size) {
     printf("Upper Triangular Matrix:\n");
     for (int i = 0; i < size; i++) {
@@ -28,7 +28,6 @@ void displayUpperTriangular(int matrix[][10], int size) {
     }
 }
 
-// Function to display elements just above and below the main diagonal
 void displayAboveBelowDiagonal(int matrix[][10], int size) {
     printf("Elements just above and below the main diagonal:\n");
     for (int i = 0; i < size; i++) {

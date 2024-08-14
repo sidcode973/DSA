@@ -4,10 +4,10 @@ int main(){
     int rows,columns;
     int non_zero_elements=0;
     int x=1;
-    printf("enter the number rows and columns of the sparse matrix:");
+    printf("enter the number rows and columns of the sparse matrix:\n");
     scanf("%d%d",&rows,&columns);
     int arr[rows][columns];
-    printf("enter the elements of the matrix: ");
+    printf("enter the elements of the matrix:\n ");
     for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
             scanf("%d",&arr[i][j]);
