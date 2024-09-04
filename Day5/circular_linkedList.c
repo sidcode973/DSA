@@ -1,77 +1,54 @@
-#include <stdio.h>
-#include <stdlib.h>
+//Write a program to create a circular linked list and display the elements of the list.
+#include<stdio.h>
+#include<stdlib.h>
 
-
-struct Node {
+struct node{
     int data;
-    struct Node* next;
+    struct node*next;
 };
-
-
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (!newNode) {
-        printf("Memory allocation failed.\n");
-    
-    }
-    newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
-}
-
-
-struct Node* append(struct Node* head, int data) {
-    struct Node* newNode = createNode(data);
-
-    if (head == NULL) {
-        head = newNode;
-        newNode->next = head;
-    } else {
-        struct Node* temp = head;
-        while (temp->next != head) {
-            temp = temp->next;
-        }
-        temp->next = newNode;
-        newNode->next = head;
-    }
-
-    return head;
-}
-
-
-void display(struct Node* head) {
-    if (head == NULL) {
-        printf("The list is empty.\n") ;
+struct node*head;
+void traverse() {
+    if(head == NULL){
+        printf("List is empty\n");
         return;
     }
-    struct Node* temp = head;
-    printf("%d -> ", temp->data) ;
-    temp = temp->next;
-    while (temp != head) {
-        printf("%d -> ", temp->data);
+    struct node*temp = head;
+    for(;;){
+        printf("%d -> ",temp->data);
         temp = temp->next;
+        if(temp == head){
+            break;
+        }
     }
-    printf("%d\n", head->data);  
+    printf("HEAD\n");
 }
-
-int main() {
-    struct Node* head = NULL;
-    int n, data;
-
-    
-    printf("Enter the number of nodes: ");
-    scanf("%d", &n);
-
-    
-    for (int i = 0; i < n; i++) {
-        printf("Enter data for node %d: ", i + 1);
-        scanf("%d", &data);
-        head = append(head, data);
+int main(){
+    int n;
+    printf("Enter the size of list: ");
+    scanf("%d",&n);
+    if (n>0){
+        head = (struct node*)malloc(sizeof(struct node));
+        if(head == NULL){
+            printf("Overflow\n");
+            return 1;
+        }
+        printf("Element 1: ");
+        scanf("%d",&(head->data));
+        head->next = head;
+        struct node*temp = head;
+        for(int i = 1; i < n ; i++){
+            struct node*ptr = (struct node*)malloc(sizeof(struct node));
+            if (ptr == NULL) {
+                printf("Overflow\n");
+                return 1;
+            }
+            temp->next = ptr;
+            printf("Element %d: ",i+1);
+            scanf("%d",&(ptr->data));
+            ptr->next = head;
+            temp = ptr;
+        }
+        traverse();
     }
-
-    
-    printf("Elements in the circular linked list:\n");
-    display(head);
-
-    return 0;
+    return 0 ;
 }
